@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cages', function (Blueprint $table) {
+        Schema::create('cageRabbit', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('eyletCage');
-            $table->date('clean');
+            $table->unsignedBigInteger('rabbit_id');
+            $table->foreign('rabbit_id')->references('id')->on('rabbits');
+            $table->unsignedBigInteger('cage_id');
+            $table->foreign('cage_id')->references('id')->on('cages');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cages');
+        Schema::dropIfExists('cageRabbit');
     }
 };

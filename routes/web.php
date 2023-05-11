@@ -37,3 +37,6 @@ Route::get("detail/{id}", [RabbitController::class, 'details']);
 Route::get("/allrabbits", [RabbitController::class, 'allrabbits']);
 //Wyszukiwanie
 Route::get("search",[RabbitController::class,'search']);
+//Formularz dodania nowego krola
+Route::view("/addrabbit", 'addrabbit');
+Route::post("/creat", [RabbitController::class, 'creat']);

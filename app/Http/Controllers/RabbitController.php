@@ -24,6 +24,7 @@ class RabbitController extends Controller
     function details($id)
     {
         $data = Rabbit::find($id);
+        Session::flash('flash', 'Messege info');
         return view('detail',['rabbit'=>$data]);
     }
 
@@ -50,5 +51,16 @@ class RabbitController extends Controller
         where('name', 'like', '%'.$req->input('query').'%')
         ->get();
         return view('search',['rabbits'=>$data]);
+    }
+
+    function creat(Request $req)
+    {
+        error_log("sda");
+        $rabbit = new Rabbit;
+        $rabbit->name=$req->name;
+        $rabbit->born=$req->born;
+        $rabbit->gender=$req->gender;
+        $rabbit->save();
+        return redirect('/');
     }
 }

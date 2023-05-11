@@ -13,6 +13,7 @@
 </head>
 <body>
     {{View::make('header')}}
+    {{View::make('vendor/sweetalert/alert')}}
     @yield('content')
     {{View::make('footer')}}
 </body>
@@ -53,6 +54,25 @@
     /* Szczegóły królika -  */
     .informacje{
         text-align: center;
+    }
+
+    /* Strona logowania */
+    .divider:after,
+    .divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+    }
+    .h-custom {
+    padding-top: 150px;
+    padding-block: 150px;
+    height: calc(100% - 73px);
+    }
+    @media (max-width: 450px) {
+    .h-custom {
+    height: 100%;
+    }
     }
 
 </style>
