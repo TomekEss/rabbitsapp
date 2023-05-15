@@ -17,13 +17,14 @@
 <img src="{{ asset('photo/addrabbit.png') }}" alt="addrabbit" style="height: 350px; display: block; margin-left: auto; margin-right: auto; padding-top: 50px;">   
 
 <div class="container text-center">
-    <form action="/creat" method="POST">
+    <form action="/creatrabbit" method="POST" enctype="multipart/form-data">
+      @csrf
     <div class="row">
       <div class="ee col-sm-6">
-        <input type="text" class="form-control" placeholder="Imie królika">
+        <input type="text" name="name" class="form-control" placeholder="Imie królika">
       </div>
       <div class="ee col-sm-6">
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" name="gender" aria-label="Default select example">
         <option selected value="Nierozpoznana">Nierozpoznana</option>
         <option value="Samiec">Samiec</option>
         <option value="Samica">Samica</option>

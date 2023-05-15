@@ -53,13 +53,15 @@ class RabbitController extends Controller
         return view('search',['rabbits'=>$data]);
     }
 
-    function creat(Request $req)
+    function creatnewrabbit(Request $req)
     {
         error_log("sda");
         $rabbit = new Rabbit;
         $rabbit->name=$req->name;
         $rabbit->born=$req->born;
         $rabbit->gender=$req->gender;
+        $rabbit->photo=$req->file('photo')->get();
+        error_log("zmiana");
         $rabbit->save();
         return redirect('/');
     }

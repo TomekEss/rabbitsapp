@@ -39,4 +39,4 @@ Route::get("/allrabbits", [RabbitController::class, 'allrabbits']);
 Route::get("search",[RabbitController::class,'search']);
 //Formularz dodania nowego krola
 Route::view("/addrabbit", 'addrabbit');
-Route::post("/creat", [RabbitController::class, 'creat']);
+Route::post("/creatrabbit", [RabbitController::class, 'creatnewrabbit']);
