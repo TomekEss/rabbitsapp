@@ -2,6 +2,11 @@
 @section("content")
 
 <div class="container">
+    @if (Session::has('flash'))
+    <div class="alert alert-info">
+        {{ Session::get('flash') }}
+    </div>
+    @endif
     <div class="row">
         <div class="col-sm-6">
             <img src="data:image/jpeg;base64,{{base64_encode($rabbit['photo'])}}" class="img-fluid">
