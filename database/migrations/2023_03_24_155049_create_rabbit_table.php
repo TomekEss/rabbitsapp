@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('rabbits', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->dateTime('born');
+            $table->date('born');
             $table->string('gender');
             $table->binary('photo')->nullable();
             $table->timestamps();
