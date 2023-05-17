@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RabbitController;
+use App\Http\Controllers\CageController;
 use Illuminate\Support\Facades\Session;
 
 /*
@@ -40,3 +41,7 @@ Route::get("search",[RabbitController::class,'search']);
 //Formularz dodania nowego krola
 Route::view("/addrabbit", 'addrabbit');
 Route::post("/creatrabbit", [RabbitController::class, 'creatnewrabbit']);
+//Usuwanie królika
+Route::get("/deleterabbit/{id}", [RabbitController::class, 'deleterabbit']);
+//Widok klatek
+Route::get('/cages', [CageController::class, 'index']); 

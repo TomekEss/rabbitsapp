@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Rabbit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class RabbitController extends Controller
 {
@@ -33,11 +34,11 @@ class RabbitController extends Controller
         if ($req->session()->has('user')) {
             $data = Rabbit::all();
 
-            if ($req->session()->get('user')['name'] === 'Tomasz Siemek') {
-                error_log('zgadza sie');
-            }else{
-                error_log('brak');
-            }
+            // if ($req->session()->get('user')['name'] === 'Tomasz Siemek') {
+            //     error_log('zgadza sie');
+            // }else{
+            //     error_log('brak');
+            // }
 
             return view('allrabbits',['rabbits'=>$data]);
         }else{
@@ -55,14 +56,20 @@ class RabbitController extends Controller
 
     function creatnewrabbit(Request $req)
     {
-        error_log("sda");
         $rabbit = new Rabbit;
         $rabbit->name=$req->name;
         $rabbit->born=$req->born;
         $rabbit->gender=$req->gender;
         $rabbit->photo=$req->file('photo')->get();
-        error_log("zmiana");
         $rabbit->save();
         return redirect('/');
+    }
+
+    function deleterabbit($id)
+    {
+        $sprawdzid = $id;
+        error_log($sprawdzid);
+        DB::table('rabbits')->where('id', '=', $id)->delete();
+        return redirect('/allrabbits');
     }
 }
