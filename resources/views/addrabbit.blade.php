@@ -9,12 +9,12 @@
 }
         .col{
     padding-top: 25px;
-    padding-block-end: 25px;    
+    padding-block-end: 25px;
     }
     </style>
 </head>
 
-<img src="{{ asset('photo/addrabbit.png') }}" alt="addrabbit" style="height: 350px; display: block; margin-left: auto; margin-right: auto; padding-top: 50px;">   
+<img src="{{ asset('photo/addrabbit.png') }}" alt="addrabbit" style="height: 350px; display: block; margin-left: auto; margin-right: auto; padding-top: 50px;">
 
 <div class="container text-center">
     <form action="/creatrabbit" method="POST" enctype="multipart/form-data">

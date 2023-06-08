@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Rabbit;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\RedirectResponse;
 
 class RabbitController extends Controller
 {
@@ -19,7 +21,7 @@ class RabbitController extends Controller
         }else{
             return redirect('login');
         }
-        
+
     }
 
     function details($id)
@@ -34,11 +36,6 @@ class RabbitController extends Controller
         if ($req->session()->has('user')) {
             $data = Rabbit::all();
 
-            // if ($req->session()->get('user')['name'] === 'Tomasz Siemek') {
-            //     error_log('zgadza sie');
-            // }else{
-            //     error_log('brak');
-            // }
 
             return view('allrabbits',['rabbits'=>$data]);
         }else{
@@ -56,19 +53,23 @@ class RabbitController extends Controller
 
     function creatnewrabbit(Request $req)
     {
+        try{
         $rabbit = new Rabbit;
         $rabbit->name=$req->name;
         $rabbit->born=$req->born;
         $rabbit->gender=$req->gender;
-        $rabbit->photo=$req->file('photo')->get();
+        if ($req->hasFile('photo')) {
+            $rabbit->photo = $req->file('photo')->get();
+        }
         $rabbit->save();
         return redirect('/');
+        } catch(Exception $req){
+            return redirect('/')->with('success','Błąd dodawania');
+        }
     }
 
     function deleterabbit($id)
     {
-        $sprawdzid = $id;
-        error_log($sprawdzid);
         DB::table('rabbits')->where('id', '=', $id)->delete();
         return redirect('/allrabbits');
     }

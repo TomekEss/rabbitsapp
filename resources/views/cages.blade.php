@@ -4,8 +4,10 @@
 <div class="container">
     <div class="w3-container">
         <h1>Wszsytkie klatki</h1>
+        <a href="{{ route('addcage') }}"> <button type="button" class="btn btn-primary"> + Dodaj klatkę</button></a>
+        <br><br>
         <div class="w3-section w3-bottombar w3-padding-16">
-            <span class="w3-margin-right">Filter:</span> 
+            <span class="w3-margin-right">Filter:</span>
             <button>ALL</button>
             <button>Metalowa</button>
             <button>Słupek</button>
@@ -31,12 +33,12 @@
                     <td>{{ $cage->eyletCage }}</td>
                     <td>{{ $cage->clean }}</td>
                     <td><button class="btn btn-primary">Przypisz królika</button></td>
-                    <td><button class="btn btn-danger">Usuń</button></td>
+                    <td><a href="/deletecage/{{$cage->id}}"><button class="btn btn-danger">Usuń</button></a></td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-    
+
 </div>
 
 @endsection
