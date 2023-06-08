@@ -44,4 +44,10 @@ Route::post("/creatrabbit", [RabbitController::class, 'creatnewrabbit']);
 //Usuwanie królika
 Route::get("/deleterabbit/{id}", [RabbitController::class, 'deleterabbit']);
 //Widok klatek
-Route::get('/cages', [CageController::class, 'index']); 
+Route::get('/cages', [CageController::class, 'index']);
+//Widok formularza nowej klatki
+Route::view('/newcage', 'newcage')->name('addcage');
+//Dodanie nowego oczka
+Route::post('/createcage',[CageController::class,'createcage'])->name('createcage');
+//Usuwanie klatki
+Route::get("/deletecage/{id}", [CageController::class, 'deletecage']);
